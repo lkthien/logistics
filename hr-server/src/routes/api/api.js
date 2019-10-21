@@ -1,5 +1,5 @@
 import express from 'express';
-import usersRouter from './users';
+import usersRouter from './user';
 
 var router = express.Router();
 
