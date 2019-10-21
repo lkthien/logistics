@@ -13,9 +13,7 @@
     "watch": "nodemon"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
-    "cross-env": "^6.0.3",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "mongoose": "^5.7.5",
@@ -28,6 +26,7 @@
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "cross-env": "^6.0.3"
   }
 }

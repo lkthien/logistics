@@ -3,9 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes/index';
-// import mongodb from 'mongodb';
 import mongoose from 'mongoose';
-import bodyparser from 'body-parser';
 
 const app = express()
 
@@ -24,7 +22,7 @@ const uri = "mongodb+srv://admin:admin@cluster0-oe9sm.mongodb.net/hr?retryWrites
 //   console.log('Mongo Connected')
 // })
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true}).then(db =>{
- console.log('Connect success', db)
+ console.log('Connect success', db.name)
 }).catch(err => console.log(err))
 
 app.use('/', indexRouter)
