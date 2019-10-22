@@ -1,8 +1,9 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+// import bodyparser from 'body-parser';
 import logger from 'morgan';
-import indexRouter from './routes/index';
+import indexRouter from './routes/index.router';
 import mongoose from 'mongoose';
 
 const app = express()

@@ -1,49 +1,62 @@
-import service from '../services/account.service'
-
-const successMessage = "successfully"
-const failureMessage = "Failed"
-const success = (res, message, result) => {
-    res.status(200).send({
-        message: message,
-        data: result
-      })
-}
-
-const failure= (res, message, code ) => {
-    res.status(code).send({
-        message: message,
-        data: result
-      })
-}
-
+import Account from '../models/account.model'
+import resHelper from '../helpers/res.helper'
+import mongodb from 'mongodb'
+const ObjectID = mongodb.ObjectID
 export default {
-    
+
     findAll(req, res, next) {
-        service.findAll().then(accounts => {
-            success(res, "Get All Accounts " + successMessage, accounts)
-        }).catch(err => {
-            failure(res, err.message, err.code)
-            next(err)
-        })
+        let actions = "Find All Account "
+        Account.find().then(docs => {
+            resHelper.success(res, actions + resHelper.successMsg, docs)
+        }).catch(err => next(err))
     },
+
     findById(req, res, next) {
-
+        let id = req.params.id
+        let actions = "Find Account By ID: " + id + " "
+        Account.find({ _id: id }).then(docs => {
+            resHelper.success(res, actions + resHelper.successMsg, docs)
+        }).catch(err => next(err))
     },
+
     add(req, res, next) {
-        service.add(req.body).save().then(user =>{
-            success(res, "Add Account " + successMessage, user)
-        }).catch(err => {
-            failure(res, err.message, err.code)
-            next(err)
-        })
+        let actions = "Add Account"
+        let account = new Account(req.body)
+        account.save().then(doc => {
+            resHelper.success(res, actions + resHelper.successMsg, doc)
+        }).catch(err => next(err))
     },
+
     update(req, res, next) {
+        let id = req.params.id
+        let actions = "Update Account ID: " + id + " "
+
+        let filter = { _id: id }
+        let update = {
+            name: req.body.name,
+            pass: req.body.pass
+        }
+
+        Account.findByIdAndUpdate(filter, update).then(doc => {
+            if (!doc) {
+                resHelper.failure(res, actions + " Not found ", 404)
+            } else {
+                resHelper.success(res, actions + resHelper.successMsg, doc)
+            }
+        }).catch(err => next(err))
 
     },
+
     delete(req, res, next) {
+        let id = req.params.id
+        let actions = "Delete Account ID: " + id + " "
 
-    },
-    remove() {
-
+        Account.findOneAndDelete({ _id: id }).then(doc => {
+            if (!doc) {
+                resHelper.failure(res, actions + resHelper.failureMsg + "- Not found -", 404)
+            } else {
+                resHelper.success(res, actions + resHelper.successMsg, doc)
+            }
+        }).catch(err => next(err))
     }
 }

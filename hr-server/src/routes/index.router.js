@@ -1,5 +1,5 @@
 import express from 'express';
-import apiRouter from './api/api';
+import apiRouter from './api/api.router';
 
 var router = express.Router();
 
