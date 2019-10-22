@@ -1,7 +1,6 @@
 import Account from '../models/account.model'
 import resHelper from '../helpers/res.helper'
-import mongodb from 'mongodb'
-const ObjectID = mongodb.ObjectID
+
 export default {
 
     findAll(req, res, next) {
