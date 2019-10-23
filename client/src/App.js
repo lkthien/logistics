@@ -117,7 +117,7 @@ function App() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            Logistics
           </Typography>
         </Toolbar>
       </AppBar>
