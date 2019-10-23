@@ -143,7 +143,7 @@ function App() {
         <Divider />
         <List>
           {Data.menus.map((item, index) => (
-            <ListItem button key={item} component={Link} to={item.link}>
+            <ListItem button key={index} component={Link} to={item.link}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItem>

@@ -1,11 +1,11 @@
 
 import React from 'react';
-import Planets from '../components/planet.component'
+import Accounts from '../components/account.component'
 function HomePage() {
   return (
     <div> 
       <h1>Home</h1>
-      <Planets/>
+      <Accounts/>
     </div>
   );
 }
