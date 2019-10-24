@@ -2,7 +2,7 @@ import React from "react";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
-import service from '../services/account.services'
+import service from '../services/account.service'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default class Accounts extends React.Component {
